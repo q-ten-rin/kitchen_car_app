@@ -49,6 +49,7 @@ MVPリリース（卒業制作）
   ・コメント機能
   ・いいね機能
   ・検索・フィルター
+  ・レビュー時の味の評価を、Chart.jsを使ってレーダーチャートで可視化（余裕があれば）
 
 ## 使用する技術スタック
 ・フレームワーク: Ruby on Rails
@@ -57,3 +58,6 @@ MVPリリース（卒業制作）
 ・画像アップロード: Active Storage
 ・データベース: PostgreSQL
 ・デプロイ: Render
+
+### 画面遷移図
+https://www.figma.com/design/5UjfxzfBvbbEZAhdaLLzdj/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C%E3%80%80%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=WFZ5oRLMQ6BA6boV-1
