@@ -1,0 +1,27 @@
+# syntax=docker/dockerfile:1
+
+FROM ruby:3.1.4
+
+# Node.js と Yarn をインストール（Rails 7 + JS対応）
+RUN apt-get update -qq && \
+    apt-get install -y build-essential libpq-dev curl && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install --global yarn && \
+    rm -rf /var/lib/apt/lists/*
+
+# 作業ディレクトリ
+WORKDIR /myapp
+
+# ホスト側のGemfileをコピーしてbundle install
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# アプリのソースコードをコピー
+COPY . .
+
+# ポート指定
+EXPOSE 3000
+
+# 開発用サーバー起動
+CMD ["bash", "-c", "rm -f tmp/pids/server.pid && bin/dev"]
