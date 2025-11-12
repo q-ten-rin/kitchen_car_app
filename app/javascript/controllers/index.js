@@ -1,7 +1,11 @@
 import { application } from "./application"
 
-// controllers フォルダ内のコントローラを自動読み込み
-import { eagerLoadControllersFrom } from "@hotwired/stimulus"
+const controllers = import.meta.glob("./*_controller.js", { eager: true })
 
-// フォルダ内のコントローラをまとめてロード
-eagerLoadControllersFrom("./controllers", application)
+for (const path in controllers) {
+  const name = path
+    .split("/")
+    .pop()
+    .replace("_controller.js", "")
+  application.register(name, controllers[path].default)
+}
