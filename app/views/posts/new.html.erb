@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1>新規投稿</h1>
+      <%= form_with model: @post, local: true do |f| %>
+        <div class="mb-3">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label :category %>
+            <%= f.select :category, Post::CATEGORIES, {}, class: "form-control" %>
+          </div>
+
+          <div class="col-md-6">
+            <%= f.label :place %>
+            <%= f.text_field :place, class: "form-control" %>
+          </div>
+
+          <div class="col-md-3">
+            <%= f.label :visited_at %>
+            <%= f.datetime_local_field :visited_at, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :kitchen_car_name %>
+          <%= f.text_field :kitchen_car_name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "form-control", rows: "10" %>
+        </div>
+        <%= f.submit nil, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

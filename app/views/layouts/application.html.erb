@@ -18,6 +18,11 @@
   </head>
 
   <body>
+  <% flash.each do |key, message| %>
+    <div class="alert alert-<%= key == "notice" ? "success" : "danger" %> mt-3">
+      <%= message %>
+    </div>
+  <% end %>  
     <%= yield %>
   </body>
 </html>
