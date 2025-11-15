@@ -1,0 +1,9 @@
+<h2>投稿一覧</h2>
+
+<div class="posts-wrapper">
+  <% @posts.each do |post| %>
+    <div class="col-md-4">
+      <%= render @posts %>
+    </div>
+  <% end %>
+</div>

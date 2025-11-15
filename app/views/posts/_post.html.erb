@@ -1,0 +1,12 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="post-card">
+      <h3><%= post.title %></h3>
+      <p><%= truncate(post.body, length: 100) %></p>
+      <p>出店場所：<%= post.place %></p>
+      <p>投稿日：<%= l(post.created_at, format: :short) %></p>
+
+      <%= link_to "詳細を見る", post_path(post), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
