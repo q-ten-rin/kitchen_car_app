@@ -27,6 +27,20 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: "削除しました"
   end
 
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: "更新しました"
+    else
+      flash.now[:danger] = "更新できませんでした"
+      render :edit
+    end
+  end
+
   private
 
   def post_params
