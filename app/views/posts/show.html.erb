@@ -1,22 +1,28 @@
 <div class="container mt-4">
   <div class="card">
-    <%# 画像があれば表示（将来追加用) %>
-    <% if @post.image.present? %>
-      <%= image_tag @post.image, class: "card-img-top" %>
-    <% end %>
+    <div class="row justify-content-evenly">
+      <div class="col-4">
+        <% if @post.images.attached? %>
+          <%= image_tag @post.images.first, class: "img-fluid mb-3" %>
+        <% else %>
+          <%= image_tag "default.png", class: "img-fluid" %>
+        <% end %>
+      </div>
+      <div class="col-4">
+        <div class="card-body">
+        <h3 class="card-title mb-3"><%= @post.title %></h3>
+        <p class="card-text"><strong>キッチンカー名：</strong><%= @post.kitchen_car_name %></p>
+        <p class="card-text"><strong>カテゴリ：</strong><%= @post.category %></p>
+        <p class="card-text"><strong>出店場所：</strong><%= @post.place %></p>
+        <p class="card-text"><strong>投稿内容：</strong><%= simple_format(@post.body) %></p>
+        <p class="card-text"><small class="text-muted">投稿日：<%= l(@post.created_at, format: :long) %></small></p>
 
-    <div class="card-body">
-      <h3 class="card-title mb-3"><%= @post.title %></h3>
-      <p class="card-text"><strong>キッチンカー名：</strong><%= @post.kitchen_car_name %></p>
-      <p class="card-text"><strong>カテゴリ：</strong><%= @post.category %></p>
-      <p class="card-text"><strong>出店場所：</strong><%= @post.place %></p>
-      <p class="card-text"><strong>投稿内容：</strong><%= simple_format(@post.body) %></p>
-      <p class="card-text"><small class="text-muted">投稿日：<%= l(@post.created_at, format: :long) %></small></p>
-
-      <% if current_user == @post.user %>
-        <%= link_to "編集", edit_post_path(@post), class: "btn btn-primary me-2" %>
-        <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
-      <% end %>
+        <% if current_user == @post.user %>
+            <%= link_to "編集", edit_post_path(@post), class: "btn btn-primary me-2" %>
+            <%= link_to "削除", post_path(@post), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

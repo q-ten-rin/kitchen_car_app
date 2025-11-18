@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "更新しました"
     else
@@ -44,6 +44,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :category, :place, :visited_at, :kitchen_car_name, :body)
+    params.require(:post).permit(:title, :category, :place, :visited_at, :kitchen_car_name, :body, images: [])
   end
 end
