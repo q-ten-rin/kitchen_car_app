@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  has_many_attached :images
   validates :title, presence: true
   validates :kitchen_car_name, presence: true
   validates :body, length: { maximum: 500 }
