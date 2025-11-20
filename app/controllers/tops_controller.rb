@@ -1,3 +1,5 @@
 class TopsController < ApplicationController
-  def index; end
+  def index
+    @posts = Post.order(created_at: :desc).limit(3)
+  end
 end
