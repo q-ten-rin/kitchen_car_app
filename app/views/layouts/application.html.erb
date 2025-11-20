@@ -18,11 +18,21 @@
   </head>
 
   <body>
-  <% flash.each do |key, message| %>
-    <div class="alert alert-<%= key == "notice" ? "success" : "danger" %> mt-3">
-      <%= message %>
+    <div class="wrapper d-flex flex-column min-vh-100">
+
+      <%= render "shared/header" %>
+
+      <% flash.each do |key, message| %>
+        <div class="alert alert-<%= key == "notice" ? "success" : "danger" %> mt-3">
+          <%= message %>
+        </div>
+      <% end %>  
+
+      <main class="flex-grow-1 pb-5">
+        <%= yield %>
+      </main>
+
+      <%= render "shared/footer" %>
     </div>
-  <% end %>  
-    <%= yield %>
   </body>
 </html>
