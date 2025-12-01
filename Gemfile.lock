@@ -139,6 +139,15 @@ GEM
       railties (>= 6.0.0)
     json (2.15.2)
     language_server-protocol (3.17.0.5)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
+    letter_opener_web (3.0.0)
+      actionmailer (>= 6.1)
+      letter_opener (~> 1.9)
+      railties (>= 6.1)
+      rexml
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.24.1)
@@ -334,6 +343,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jsbundling-rails
+  letter_opener_web (~> 3.0)
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.2)
