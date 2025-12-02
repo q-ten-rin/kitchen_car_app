@@ -1,0 +1,50 @@
+<div class="container py-4">
+
+  <!-- プロフィール上部 -->
+  <div class="text-center mb-4">
+
+    <% if @profile %>
+      <!-- アイコン -->
+      <% if @profile.avatar.attached? %>
+        <%= image_tag @profile.avatar, class: "rounded-circle mb-3", style: "width: 120px; height: 120px; object-fit: cover;" %>
+      <% else %>
+        <div class="rounded-circle bg-secondary d-inline-flex justify-content-center align-items-center mb-3" style="width: 120px; height: 120px; font-size: 50px; color: white;">
+          <i class="bi bi-person"></i>
+        </div>
+      <% end %>
+
+      <!-- 名前 -->
+      <h3 class="fw-bold mb-2"><%= @profile.name %></h3>
+
+      <!-- プロフィール文 -->
+      <% if @profile.introduction.present? %>
+        <p class="text-muted mb-3"><%= @profile.introduction %></p>
+      <% end %>
+
+      <!-- 編集ボタン（ログイン本人のみ表示） -->
+      <% if current_user == @profile %>
+        <%= link_to "プロフィールを編集", edit_profile_path, class: "btn btn-outline-primary btn-sm" %>
+      <% end %>
+    <% else %>
+      <p>ユーザー情報が見つかりません。</p>
+    <% end %>
+  </div>
+
+    <!-- タブメニュー（Bootstrap nav-pills） -->
+    <nav class="nav nav-pills nav-justified mb-4">
+      <%= link_to "投稿", profile_path(@profile, tab: :posts), class: "nav-link #{params[:tab] != 'likes' ? 'active' : ''}" %>
+      <%= link_to "いいね", profile_path(@user, tab: :likes), class: "nav-link #{params[:tab] == 'likes' ? 'active' : ''}" %>
+    </nav>
+
+    <!-- 投稿一覧 -->
+    <% posts = params[:tab] == "likes" ? @liked_posts : @profile.posts %>
+
+    <div class="row posts-wrapper">
+        <% posts.each do |post| %>
+        <div class="col-md-4">
+            <%= render "posts/post", post: post %>
+        </div>
+        <% end %>
+    </div>
+
+</div>
