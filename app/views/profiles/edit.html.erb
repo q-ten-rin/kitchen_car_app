@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1 class="text-center mt-5">プロフィール編集</h1>
+      <%= form_with model: @profile, url: profile_path, local: true, multipart: true do |f| %>
+        <div class="mb-3">
+          <%= f.label "名前" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label "自己紹介" %>
+          <%= f.text_area :introduction, class: "form-control", rows: "10" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :avatar, "プロフィール画像" %>
+          <%= f.file_field :avatar, accept: "image/*" %>
+        </div>
+
+        <div class="mb-3">
+          <%= image_tag @profile.avatar.attached? ? url_for(@profile.avatar) : "default.png", class: "rounded-circle", size: "120x120" %>
+        </div>
+        <%= f.submit nil, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
