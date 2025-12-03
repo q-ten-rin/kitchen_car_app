@@ -1,0 +1,7 @@
+<div class='ms-auto'>
+  <% if current_user.favorite?(post) %>
+    <%= render 'posts/unfavorite', { post: post } %>
+  <% else %>
+    <%= render 'posts/favorite', { post: post } %>
+  <% end %>
+</div>

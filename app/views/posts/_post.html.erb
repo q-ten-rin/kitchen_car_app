@@ -1,12 +1,16 @@
 <div class="card h-100 mb-3">
   <div class="card-body d-flex flex-column">
     <div class="row justify-content-evenly">
-      <div class="col-4">
+      <div class="col-4 position-relative">
         <% if post.images.attached? %>
           <%= image_tag post.images.first, class: "img-fluid mb-3" %>
         <% else %>
           <%= image_tag "default.png", class: "img-fluid" %>
         <% end %>
+
+        <div class="position-absolute top-0 end-0 m-3">
+          <%= render "posts/favorite_buttons", post: post %>
+        </div>
       </div>
       <div class="col-4">
         <div class="flex-grow-1">

@@ -32,12 +32,12 @@
 
     <!-- タブメニュー（Bootstrap nav-pills） -->
     <nav class="nav nav-pills nav-justified mb-4">
-      <%= link_to "投稿", profile_path(@profile, tab: :posts), class: "nav-link #{params[:tab] != 'likes' ? 'active' : ''}" %>
-      <%= link_to "いいね", profile_path(@user, tab: :likes), class: "nav-link #{params[:tab] == 'likes' ? 'active' : ''}" %>
+      <%= link_to "投稿", profile_path(@profile, tab: :posts), class: "nav-link #{params[:tab] != 'favorites' ? 'active' : ''}" %>
+      <%= link_to "いいね", profile_path(@user, tab: :favorites), class: "nav-link #{params[:tab] == 'favorites' ? 'active' : ''}" %>
     </nav>
 
     <!-- 投稿一覧 -->
-    <% posts = params[:tab] == "likes" ? @liked_posts : @profile.posts %>
+    <% posts = params[:tab] == "favorites" ? @favorite_posts : @profile.posts %>
 
     <div class="row posts-wrapper">
         <% posts.each do |post| %>
