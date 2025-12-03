@@ -1,7 +1,9 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: %i[show edit update]
 
-  def show; end
+  def show
+    @favorite_posts = current_user.favorite_posts.includes(:user)
+  end
 
   def edit; end
 

@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   has_many_attached :images
+  has_many :favorites, dependent: :destroy
   validates :title, presence: true
   validates :kitchen_car_name, presence: true
   validates :body, length: { maximum: 500 }
