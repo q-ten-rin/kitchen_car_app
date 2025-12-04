@@ -13,7 +13,13 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    tag_names = params[:post][:tag_names]
+
     if @post.save
+      if tag_names.present?
+        tags = tag_names.split(",").reject(&:blank?).uniq
+        create_or_update_post_tags(@post, tags)
+      end
       redirect_to posts_path, notice: "投稿しました"
     else
       flash.now[:danger] = "投稿できませんでした"
@@ -33,7 +39,13 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
+    tag_names = params[:post][:tag_names]
+
     if @post.update(post_params)
+      if tag_names.present?
+        tags = tag_names.split(",").reject(&:blank?).uniq
+        create_or_update_post_tags(@post, tags)
+      end
       redirect_to posts_path, notice: "更新しました"
     else
       flash.now[:danger] = "更新できませんでした"
@@ -45,5 +57,17 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :category, :place, :visited_at, :kitchen_car_name, :body, images: [])
+  end
+
+  def create_or_update_post_tags(post, tags)
+    post.post_tags.destroy_all
+    begin
+    tags.each do |tag|
+      tag = Tag.find_or_create_by(name: tag)
+      post.tags << tag
+      rescue ActiveRecord::RecordInvalid
+        false
+      end
+    end
   end
 end

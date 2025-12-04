@@ -17,6 +17,11 @@
           <h3><%= post.title %></h3>
           <p>出店場所：<%= post.place %></p>
           <p>投稿日：<%= l(post.created_at, format: :short) %></p>
+          <% if post.tags.present? %>
+            <div class="mb-3">
+              <%= render 'posts/tags', post: post %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
