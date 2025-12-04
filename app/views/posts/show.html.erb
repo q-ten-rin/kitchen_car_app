@@ -15,6 +15,11 @@
         <p class="card-text"><strong>カテゴリ：</strong><%= @post.category %></p>
         <p class="card-text"><strong>出店場所：</strong><%= @post.place %></p>
         <p class="card-text"><strong>投稿内容：</strong><%= simple_format(@post.body) %></p>
+        <% if @post.tags.present? %>
+          <div class="mb-3">
+            <%= render 'posts/tags', post: @post %>
+          </div>
+        <% end %>
         <p class="card-text"><small class="text-muted">投稿日：<%= l(@post.created_at, format: :long) %></small></p>
 
         <% if current_user == @post.user %>

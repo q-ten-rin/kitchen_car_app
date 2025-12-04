@@ -35,5 +35,10 @@
       <%= f.label :images %>
       <%= f.file_field :images, multiple: true, class: "form-control" %>
     </div>
+
+    <div class="mb-3">
+      <%= f.label :tags %>
+      <%= f.text_field :tag_names, class: "form-control", value: post.tags.map(&:name).join(",") %>
+    </div>
     <%= f.submit nil, class: "btn btn-primary" %>
   <% end %>
