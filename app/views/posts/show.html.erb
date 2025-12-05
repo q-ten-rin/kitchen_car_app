@@ -1,12 +1,15 @@
 <div class="container mt-4">
   <div class="card">
     <div class="row justify-content-evenly">
-      <div class="col-4">
+      <div class="col-4 position-relative">
         <% if @post.images.attached? %>
           <%= image_tag @post.images.first, class: "img-fluid mb-3" %>
         <% else %>
           <%= image_tag "default.png", class: "img-fluid" %>
         <% end %>
+        <div class="position-absolute top-0 end-0 mt-1 me-3">
+          <%= render "posts/favorite_buttons", post: @post %>
+        </div>
       </div>
       <div class="col-4">
         <div class="card-body">
