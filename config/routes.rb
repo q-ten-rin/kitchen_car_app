@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get :favorites
     end
+    resources :comments, only: [:create, :destroy, :edit, :update]
   end
   resources :favorites, only: %i[create destroy]
   resource :profile
