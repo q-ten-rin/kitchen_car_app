@@ -31,6 +31,16 @@
       <%= f.text_area :body, class: "form-control", rows: "10" %>
     </div>
 
+    <div class="form-group">
+      <%= f.label :star, "評価" %>
+
+      <!-- hidden field（選んだ星が入る）-->
+      <%= f.hidden_field :star, id: "post_star" %>
+
+      <!-- ここに星が表示される -->
+      <div id="post_raty"></div>
+    </div>
+
     <div class="mb-3">
       <%= f.label :images %>
       <%= f.file_field :images, multiple: true, class: "form-control" %>

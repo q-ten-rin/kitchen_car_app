@@ -14,6 +14,10 @@
       <div class="col-4">
         <div class="card-body">
         <h3 class="card-title mb-3"><%= @post.title %></h3>
+        <div class="post-show-star" 
+             class="card-text"
+             data-score="<%= @post.star.to_i %>">
+        </div>
         <p class="card-text"><strong>キッチンカー名：</strong><%= @post.kitchen_car_name %></p>
         <p class="card-text"><strong>カテゴリ：</strong><%= @post.category.name %></p>
         <p class="card-text"><strong>出店場所：</strong><%= @post.place %></p>
