@@ -14,9 +14,9 @@ window.addEventListener("turbo:load", () => {
     const initialScore = parseInt(hidden.value) || 0;  // 数値に変換、空なら0
     new Raty(formStar, {
       score: initialScore,
-      starOn: "/assets/star-on.png",
-      starOff: "/assets/star-off.png",
-      starHalf: "/assets/star-half.png",
+      starOn: "/images/star-on.png",
+      starOff: "/images/star-off.png",
+      starHalf: "/images/star-half.png",
       click: (score) => { hidden.value = score; }
     }).init();
     formStar.dataset.ratyInitialized = "true";
@@ -28,9 +28,9 @@ window.addEventListener("turbo:load", () => {
       new Raty(el, {
         readOnly: true,
         score: parseInt(el.dataset.score) || 0,
-        starOn: "/assets/star-on.png",
-        starOff: "/assets/star-off.png",
-        starHalf: "/assets/star-half.png"
+        starOn: "/images/star-on.png",
+        starOff: "/images/star-off.png",
+        starHalf: "/images/star-half.png"
       }).init();
       el.dataset.ratyInitialized = "true";
     }
