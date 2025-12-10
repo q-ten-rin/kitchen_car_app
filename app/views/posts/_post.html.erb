@@ -15,6 +15,9 @@
       <div class="col-4">
         <div class="flex-grow-1">
           <h3><%= post.title %></h3>
+          <div class="post-show-star" 
+              data-score="<%= post.star %>">
+          </div>
           <p>出店場所：<%= post.place %></p>
           <p>投稿日：<%= l(post.created_at, format: :short) %></p>
           <% if post.tags.present? %>
