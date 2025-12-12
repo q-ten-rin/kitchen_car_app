@@ -11,16 +11,11 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  CATEGORIES = [
-    "クレープ",
-    "コーヒー",
-    "ハンバーガー",
-    "ピザ",
-    "カレー",
-    "タコス",
-    "ラーメン",
-    "スイーツ",
-    "ドリンク",
-    "その他"
-  ]
+  def self.ransackable_attributes(auth_object = nil)
+    column_names
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "comments", "favorites", "images_attachments", "images_blobs", "post_tags", "tags", "user"]
+  end
 end
