@@ -38,7 +38,7 @@ gem "devise"
 gem 'devise-i18n'
 gem 'rails-i18n'
 gem "jsbundling-rails"
-gem 'draper', '4.0.2'
+gem 'draper', '4.0.6'
 gem 'ransack'
 
 group :development, :test do
