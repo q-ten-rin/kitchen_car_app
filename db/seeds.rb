@@ -9,7 +9,6 @@ categories = [
   "フード",
   "ドリンク",
   "その他",
-  "未分類"
 ]
 
 categories.each do |name|

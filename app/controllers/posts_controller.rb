@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(:user)
   end
 
   def show
