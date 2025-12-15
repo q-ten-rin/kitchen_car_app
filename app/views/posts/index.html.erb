@@ -2,11 +2,11 @@
   <h2 class="text-center mt-4">検索</h2>
   <%= search_form_for @q do |f| %>
 
-    <div class="d-flex gap-3">
+    <div class="d-flex gap-5 ">
 
       <!-- キーワード検索 -->
-      <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_posts_path %>" role="combobox">
-        <div class="m-4 flex-grow-1">
+      <div class="m-4 ms-5 flex-grow-1">
+        <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_posts_path %>" role="combobox">
           <%= f.label :title_or_kitchen_car_name_or_body_or_place_or_tags_name_cont, "検索ワード", class: "form-label" %><br>
           <%= f.search_field :title_or_kitchen_car_name_or_body_or_place_or_tags_name_cont, class: "w-100", placeholder: "キーワードを入力...", data: { autocomplete_target: 'input' } %>
           <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
@@ -15,14 +15,14 @@
       </div>
 
       <!-- カテゴリ選択 -->
-      <div class="mt-4">
+      <div class="mt-4 flex-grow-1">
         <%= f.label :category_id_eq, "カテゴリーを選択する", class: "form-label" %><br>
         <%= f.collection_select :category_id_eq, Category.where.not(id: 0), :id, :name,
-              { include_blank: "カテゴリーを選択" } %>
+              { include_blank: "カテゴリーを選択" }, class: "w-100" %>
       </div>
 
       <!-- ボタン -->
-      <div class="mt-5 me-3">
+      <div class="mt-5 me-3 flex-shrink-0">
         <%= f.submit "検索", class: "btn btn-primary" %>
       </div>
     </div>
