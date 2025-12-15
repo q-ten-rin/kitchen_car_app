@@ -5,9 +5,13 @@
     <div class="d-flex gap-3">
 
       <!-- キーワード検索 -->
-      <div class="m-4 flex-grow-1">
-        <%= f.label :title_or_kitchen_car_name_or_body_or_place_or_tags_name_cont, "検索ワード", class: "form-label" %><br>
-        <%= f.search_field :title_or_kitchen_car_name_or_body_or_place_or_tags_name_cont, class: "w-100", placeholder: "キーワードを入力..." %>
+      <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_posts_path %>" role="combobox">
+        <div class="m-4 flex-grow-1">
+          <%= f.label :title_or_kitchen_car_name_or_body_or_place_or_tags_name_cont, "検索ワード", class: "form-label" %><br>
+          <%= f.search_field :title_or_kitchen_car_name_or_body_or_place_or_tags_name_cont, class: "w-100", placeholder: "キーワードを入力...", data: { autocomplete_target: 'input' } %>
+          <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
+          <ul class="list-group" data-autocomplete-target="results"></ul>
+        </div>
       </div>
 
       <!-- カテゴリ選択 -->
@@ -32,9 +36,9 @@
   <%= sort_link(@q, :star, "評価順", class: "m-2") %>
 </div>
 
-<div class="row posts-wrapper">
+<div class="row g-3 posts-wrapper">
   <% @posts.each do |post| %>
-    <div class="col-md-4">
+    <div class="col-md-4 d-flex mb-3">
       <%= render post %>
     </div>
   <% end %>

@@ -54,6 +54,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def autocomplete
+    @posts = Post.where("title like ?", "%#{params[:q]}%")
+    render layout: false
+  end
+
   private
 
   def post_params

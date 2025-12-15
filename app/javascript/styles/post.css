@@ -9,3 +9,38 @@
   font-weight: bold;
   text-decoration: none;
 }
+
+/* 星のコンテナ（行ズレ防止） */
+.post-show-star {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* 星画像のサイズを統一 */
+.post-show-star img {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;  /* 画像が小さい時の背景 */
+  border-radius: 8px;
+}
+
+.post-card-image {
+  width: 100%;
+  height: 100%;      /* 好きな高さに調整 */
+  object-fit: cover;  /* トリミングして高さ揃う */
+}
+
