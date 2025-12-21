@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :posts do
+  resources :posts, param: :uuid do
     collection do
       get :favorites
       get :autocomplete
