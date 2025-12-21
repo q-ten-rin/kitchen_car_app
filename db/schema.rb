@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_21_053749) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_21_055108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,7 +92,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_21_053749) do
     t.integer "user_id"
     t.bigint "category_id", null: false
     t.integer "star"
-    t.string "uuid"
+    t.string "uuid", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["uuid"], name: "index_posts_on_uuid", unique: true
   end
