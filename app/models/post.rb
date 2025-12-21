@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  before_validation :set_uuid, on: :create
   has_many_attached :images
   has_many :favorites, dependent: :destroy
   has_many :post_tags, dependent: :destroy
@@ -17,5 +18,15 @@ class Post < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     ["category", "comments", "favorites", "images_attachments", "images_blobs", "post_tags", "tags", "user"]
+  end
+
+  def to_param
+    uuid
+  end
+
+  private
+
+  def set_uuid
+    self.uuid ||= SecureRandom.uuid
   end
 end

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by!(uuid: params[:uuid])
   end
 
   def new
@@ -29,17 +29,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = current_user.posts.find(params[:id])
+    post = current_user.posts.find_by!(uuid: params[:uuid])
     post.destroy
     redirect_to posts_path, notice: "削除しました"
   end
 
   def edit
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.find_by!(uuid: params[:uuid])
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.find_by!(uuid: params[:uuid])
     tag_names = params[:post][:tag_names]
 
     if @post.update(post_params)
