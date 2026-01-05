@@ -1,6 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.hosts << "kitchen-car-app-62t9.onrender.com"
   config.hosts << "kitchencardiary.com"      # 独自ドメイン 
   config.hosts << "www.kitchencardiary.com"  # サブドメイン
   # Settings specified here will take precedence over those in config/application.rb.
