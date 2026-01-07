@@ -35,11 +35,14 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem 'devise-i18n'
 gem 'rails-i18n'
 gem "jsbundling-rails"
 gem 'draper', '4.0.2'
 gem 'ransack'
+gem 'dotenv-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
