@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get "terms", to: "static_pages#terms"
   get "privacy", to: "static_pages#privacy"
   get "contact", to: "static_pages#contact"
+  
+  resources :maps, only: [:index]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

@@ -50,5 +50,18 @@
       <%= f.label :tags %>
       <%= f.text_field :tag_names, class: "form-control", value: post.tags.map(&:name).join(",") %>
     </div>
+
+    <%= f.hidden_field :latitude, id: "post_latitude" %>
+    <%= f.hidden_field :longitude, id: "post_longitude" %>
+
+    <p>マップ</p>
+    <div id='map' class="form-map"></div>
+
     <%= f.submit nil, class: "btn btn-primary" %>
   <% end %>
+
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap"
+  async
+  defer>
+</script>

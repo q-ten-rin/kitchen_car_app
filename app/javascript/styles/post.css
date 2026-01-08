@@ -44,3 +44,12 @@
   object-fit: cover;  /* トリミングして高さ揃う */
 }
 
+.form-map {
+  height: 600px;
+  width: 100%;
+}
+
+.show-map {
+  height: 200px;
+  width: 100%;
+}
