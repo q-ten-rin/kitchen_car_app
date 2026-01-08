@@ -2,25 +2,28 @@
   <div class="card mb-4 p-3">
     <div class="row justify-content-evenly">
       <div class="col-4 position-relative">
-        <% if @post.images.attached? %>
-          <%= image_tag @post.images.first, class: "img-fluid mb-3" %>
-        <% else %>
-          <%= image_tag "default.png", class: "img-fluid" %>
-        <% end %>
-        <div class="position-absolute top-0 end-0 mt-1 me-3">
-          <%= render "posts/favorite_buttons", post: @post %>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card-body">
-        <h3 class="card-title mb-3"><%= @post.title %></h3>
+      <h3 class="card-title mt-3"><%= @post.title %></h3>
         <div class="post-show-star" 
              class="card-text"
              data-score="<%= @post.star.to_i %>">
         </div>
+        <div class="mt-5">
+          <% if @post.images.attached? %>
+            <%= image_tag @post.images.first, class: "img-fluid mb-3" %>
+          <% else %>
+            <%= image_tag "default.png", class: "img-fluid" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card-body">
+        <div class="position-absolute top-0 end-0 mt-2 me-3">
+          <%= render "posts/favorite_buttons", post: @post %>
+        </div>
         <p class="card-text"><strong>キッチンカー名：</strong><%= @post.kitchen_car_name %></p>
         <p class="card-text"><strong>カテゴリ：</strong><%= @post.category.name %></p>
         <p class="card-text"><strong>出店場所：</strong><%= @post.place %></p>
+        <div id='map' class="show-map" data-lat="<%= @post.latitude %>" data-lng="<%= @post.longitude %>"></div>
         <p class="card-text"><strong>投稿内容：</strong><%= simple_format(@post.body) %></p>
         <% if @post.tags.present? %>
           <div class="mb-3">
@@ -47,3 +50,9 @@
     <%= render 'comments/form', comment: Comment.new, post: @post %>
   </div>
 </div>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap"
+  async
+  defer>
+</script>
