@@ -4,7 +4,11 @@ FROM ruby:3.1.4
 
 # Node.js と Yarn をインストール（Rails 7 + JS対応）
 RUN apt-get update -qq && \
-    apt-get install -y build-essential libpq-dev curl && \
+    apt-get install -y \
+      build-essential \
+      libpq-dev \
+      curl \
+      imagemagick && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs && \
     npm install --global yarn && \
