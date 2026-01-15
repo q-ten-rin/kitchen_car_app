@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :kitchen_car_name, presence: true
   validates :body, length: { maximum: 500 }
+  after_commit :optimize_images, on: :create
 
   belongs_to :user
 
@@ -28,5 +29,16 @@ class Post < ApplicationRecord
 
   def set_uuid
     self.uuid ||= SecureRandom.uuid
+  end
+
+  def optimize_images
+    images.each do |image|
+      optimized = image.variant(
+        resize_to_limit: [1200, 1200],
+        format: :webp
+      ).processed
+
+      image.blob.update!(content_type: "image/webp")
+    end
   end
 end
