@@ -35,14 +35,14 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
-gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection'
-gem 'devise-i18n'
-gem 'rails-i18n'
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
+gem "devise-i18n"
+gem "rails-i18n"
 gem "jsbundling-rails"
-gem 'draper', '4.0.2'
-gem 'ransack'
-gem 'dotenv-rails'
+gem "draper", "4.0.2"
+gem "ransack"
+gem "dotenv-rails"
 gem "image_processing"
 gem "mini_magick"
 gem "meta-tags"
@@ -63,10 +63,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'letter_opener_web', '~> 3.0'
-
-  # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
-  gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
+  gem "letter_opener_web", "~> 3.0"
 end
 
 group :test do

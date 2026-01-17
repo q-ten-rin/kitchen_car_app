@@ -18,7 +18,7 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["category", "comments", "favorites", "images_attachments", "images_blobs", "post_tags", "tags", "user"]
+    [ "category", "comments", "favorites", "images_attachments", "images_blobs", "post_tags", "tags", "user" ]
   end
 
   def to_param
@@ -34,7 +34,7 @@ class Post < ApplicationRecord
   def optimize_images
     images.each do |image|
       optimized = image.variant(
-        resize_to_limit: [1200, 1200],
+        resize_to_limit: [ 1200, 1200 ],
         format: :webp
       ).processed
 
