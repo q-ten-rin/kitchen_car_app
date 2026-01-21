@@ -34,6 +34,9 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
@@ -70,4 +73,12 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryBot::Syntax::Methods
+  config.before(:each, type: :system) do
+    # driven_by :remote_chrome
+    # Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    # Capybara.server_port = 4444
+    # Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+    # Capybara.ignore_hidden_elements = false
+    driven_by :rack_test
+  end
 end

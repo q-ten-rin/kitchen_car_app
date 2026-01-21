@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user)
@@ -24,7 +26,7 @@ class PostsController < ApplicationController
       redirect_to posts_path, notice: "投稿しました"
     else
       flash.now[:danger] = "投稿できませんでした"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -50,7 +52,7 @@ class PostsController < ApplicationController
       redirect_to posts_path, notice: "更新しました"
     else
       flash.now[:danger] = "更新できませんでした"
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

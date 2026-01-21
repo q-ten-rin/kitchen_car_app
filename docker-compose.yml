@@ -1,6 +1,6 @@
 version: '3'
 services:
-  db:
+  db_dev:
     image: postgres:15
     restart: always
     environment:
@@ -9,11 +9,29 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: kitchen_car_app_development
     volumes:
-      - postgresql_data:/var/lib/postgresql/data
+      - postgresql_data_dev:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d kitchen_car_app_development -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db_test:
+    image: postgres:15
+    restart: always
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: kitchen_car_app_test
+    volumes:
+      - postgresql_data_test:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d kitchen_car_app_test -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -33,14 +51,14 @@ services:
       - node_modules:/myapp/node_modules
     environment:
       TZ: Asia/Tokyo
-      DATABASE_URL: postgres://postgres:password@db:5432/kitchen_car_app_development
     ports:
       - "3000:3000"
     depends_on:
-      db:
+      db_dev:
         condition: service_healthy
 
 volumes:
   bundle_data:
-  postgresql_data:
+  postgresql_data_dev:
+  postgresql_data_test:
   node_modules:

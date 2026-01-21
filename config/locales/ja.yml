@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        title: タイトル
+        kitchen_car_name: キッチンカー名
+        category: カテゴリー
+        category_id: カテゴリー
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        
