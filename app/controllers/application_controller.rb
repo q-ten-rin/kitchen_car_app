@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  include Devise::Controllers::Helpers
+
   protected
 
   def configure_permitted_parameters

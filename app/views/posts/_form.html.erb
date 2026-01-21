@@ -1,33 +1,33 @@
 <%= form_with model: @post, local: true, multipart: true do |f| %>
     <div class="mb-3">
-      <%= f.label :title %>
+      <%= f.label :title, "タイトル" %>
       <%= f.text_field :title, class: "form-control" %>
     </div>
 
     <div class="row">
       <div class="col-md-3">
-        <%= f.label :category %>
+        <%= f.label :category, "カテゴリー" %>
         <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
       </div>
 
       <div class="col-md-6">
-        <%= f.label :place %>
+        <%= f.label :place, "場所" %>
         <%= f.text_field :place, class: "form-control" %>
       </div>
 
       <div class="col-md-3">
-        <%= f.label :visited_at %>
+        <%= f.label :visited_at, "訪れた日時" %>
         <%= f.datetime_local_field :visited_at, class: "form-control" %>
       </div>
     </div>
 
     <div class="mb-3">
-      <%= f.label :kitchen_car_name %>
+      <%= f.label :kitchen_car_name, "キッチンカーの名前" %>
       <%= f.text_field :kitchen_car_name, class: "form-control" %>
     </div>
 
     <div class="mb-3">
-      <%= f.label :body %>
+      <%= f.label :body, "本文" %>
       <%= f.text_area :body, class: "form-control", rows: "10" %>
     </div>
 
@@ -42,12 +42,12 @@
     </div>
 
     <div class="mb-3">
-      <%= f.label :images %>
+      <%= f.label :images, "画像" %>
       <%= f.file_field :images, multiple: true, class: "form-control" %>
     </div>
 
     <div class="mb-3">
-      <%= f.label :tags %>
+      <%= f.label :tags, "タグ" %>
       <%= f.text_field :tag_names, class: "form-control", value: post.tags.map(&:name).join(",") %>
     </div>
 
