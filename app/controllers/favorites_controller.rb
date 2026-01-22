@@ -8,6 +8,6 @@ class FavoritesController < ApplicationController
   def destroy
     post = current_user.favorites.find(params[:id]).post
     current_user.unfavorite(post)
-    redirect_to , success: t(".success"), status: :see_other
+    redirect_to success: t(".success"), status: :see_other
   end
 end
