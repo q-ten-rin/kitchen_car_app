@@ -30,12 +30,12 @@
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg", id: "user_password" %>
         </div>
 
         <div class="field">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg", id: "user_password_confirmation" %>
         </div>
 
         <div class="actions">
