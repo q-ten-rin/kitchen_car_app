@@ -1,15 +1,16 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[edit update]
 
   def show
-    @favorite_posts = current_user.favorite_posts.includes(:user)
+    @profile = User.find(params[:id])
+    @favorite_posts = @profile.favorite_posts.includes(:user)
   end
 
   def edit; end
 
   def update
     if @profile.update(user_params)
-      redirect_to profile_path, notice: "更新しました"
+      redirect_to profile_path(@profile), notice: "更新しました"
     else
       render :edit
     end

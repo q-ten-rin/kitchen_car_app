@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :comments, only: [ :create, :destroy, :edit, :update ]
   end
   resources :favorites, only: %i[create destroy]
-  resource :profile
+  resources :profiles
   root "tops#index"
 
   get "up" => "rails/health#show", as: :rails_health_check
