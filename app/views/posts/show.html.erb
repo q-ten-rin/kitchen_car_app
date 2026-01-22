@@ -30,7 +30,8 @@
             <%= render 'posts/tags', post: @post %>
           </div>
         <% end %>
-        <p class="card-text"><small class="text-muted">投稿日：<%= l(@post.created_at, format: :long) %></small></p>
+        <p class="card-text"><strong>投稿日：</strong><%= l(@post.created_at, format: :long) %></p>
+        <p class="card-text"><strong>投稿者：</strong><%= link_to @post.user.name, profile_path(@post.user_id) %></p>
 
         <% if current_user == @post.user %>
             <%= link_to "編集", edit_post_path(@post), class: "btn btn-primary me-2" %>

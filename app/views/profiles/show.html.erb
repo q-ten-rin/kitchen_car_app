@@ -33,7 +33,7 @@
     <!-- タブメニュー（Bootstrap nav-pills） -->
     <nav class="nav nav-pills nav-justified mb-4">
       <%= link_to "投稿", profile_path(@profile, tab: :posts), class: "nav-link #{params[:tab] != 'favorites' ? 'active' : ''}" %>
-      <%= link_to "いいね", profile_path(@user, tab: :favorites), class: "nav-link #{params[:tab] == 'favorites' ? 'active' : ''}" %>
+      <%= link_to "いいね", profile_path(@profile, tab: :favorites), class: "nav-link #{params[:tab] == 'favorites' ? 'active' : ''}" %>
     </nav>
 
     <!-- 投稿一覧 -->
@@ -46,5 +46,4 @@
         </div>
         <% end %>
     </div>
-
 </div>
