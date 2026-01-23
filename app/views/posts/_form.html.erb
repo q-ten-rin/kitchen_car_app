@@ -1,12 +1,19 @@
+<p class="text-muted small mb-3">
+  <span class="text-danger">*</span> は必須項目です
+</p>
 <%= form_with model: @post, local: true, multipart: true do |f| %>
     <div class="mb-3">
-      <%= f.label :title, "タイトル" %>
+      <%= f.label :title do %>
+        タイトル <span class="text-danger">*</span>
+      <% end %>
       <%= f.text_field :title, class: "form-control" %>
     </div>
 
     <div class="row">
       <div class="col-md-3">
-        <%= f.label :category, "カテゴリー" %>
+        <%= f.label :category do %>
+          カテゴリー <span class="text-danger">*</span>
+        <% end %>
         <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
       </div>
 
@@ -22,7 +29,9 @@
     </div>
 
     <div class="mb-3">
-      <%= f.label :kitchen_car_name, "キッチンカーの名前" %>
+      <%= f.label :title do %>
+        キッチンカーの名前 <span class="text-danger">*</span>
+      <% end %>
       <%= f.text_field :kitchen_car_name, class: "form-control" %>
     </div>
 
