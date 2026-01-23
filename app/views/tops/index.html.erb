@@ -2,10 +2,12 @@
   <h1>キッチンカー日記</h1>
   <p class="my-5">キッチンカーを利用した体験を共有できるレビュー投稿アプリです。<br>「どのキッチンカーが美味しかったか」「どんな体験ができたか」を投稿・閲覧することで、キッチンカーの魅力を発信します。</br></p>
 
-  <div class="d-flex justify-content-center gap-3 mb-3">
-    <%= link_to '新規登録', new_user_registration_path, class: "btn btn-primary btn-lg" %>
-    <%= link_to 'ログイン', new_user_session_path, class: "btn btn-primary btn-lg", id: "login-button" %>
-  </div>
+  <% unless current_user %>
+    <div class="d-flex justify-content-center gap-3 mb-3">
+      <%= link_to '新規登録', new_user_registration_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to 'ログイン', new_user_session_path, class: "btn btn-primary btn-lg", id: "login-button" %>
+    </div>
+  <% end %>
 </div>
 
 <div>
