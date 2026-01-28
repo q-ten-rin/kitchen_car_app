@@ -105,5 +105,6 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  Rails.logger.info "Cloudinary: #{ENV['CLOUDINARY_CLOUD_NAME']}, #{ENV['CLOUDINARY_API_KEY']}, #{ENV['CLOUDINARY_API_SECRET']}"
 end
 Rails.application.routes.default_url_options[:host] = "https://kitchencardiary.com"
