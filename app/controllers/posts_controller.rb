@@ -19,12 +19,6 @@ class PostsController < ApplicationController
     tag_names = params[:post][:tag_names]
 
     if @post.save
-
-      if params[:post][:images].present?
-        images = params[:post][:images].reject(&:blank?)
-        @post.images.attach(images)
-      end
-
       if tag_names.present?
         tags = tag_names.split(",").reject(&:blank?).uniq
         create_or_update_post_tags(@post, tags)
@@ -50,11 +44,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.find_by!(uuid: params[:uuid])
     tag_names = params[:post][:tag_names]
 
-    if @post.update(post_params)
-
+    if @post.update(post_params.except(:images))
       if params[:post][:images].present?
-        images = params[:post][:images].reject(&:blank?)
-        @post.images.attach(images) if images.any?
+        @post.images.attach(params[:post][:images])
       end
 
       if tag_names.present?
@@ -76,7 +68,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :category_id, :place, :visited_at, :kitchen_car_name, :body, :star, :latitude, :longitude)
+    params.require(:post).permit(:title, :category_id, :place, :visited_at, :kitchen_car_name, :body, :star, :latitude, :longitude, images: [])
   end
 
   def create_or_update_post_tags(post, tags)
