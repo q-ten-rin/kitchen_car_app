@@ -1,18 +1,25 @@
-<div class="text-center my-5">
-  <h1>キッチンカー日記</h1>
-  <p class="my-5">キッチンカーを利用した体験を共有できるレビュー投稿アプリです。<br>「どのキッチンカーが美味しかったか」「どんな体験ができたか」を投稿・閲覧することで、キッチンカーの魅力を発信します。</br></p>
+<div class="card m-5 shadow p-3 mb-5 bg-body-tertiary rounded">
+  <div class="text-center m-5">
+    <h1 class="border-bottom m-5">キッチンカー日記</h1>
+    <p class="my-5">キッチンカーを利用した体験を共有できるレビュー投稿アプリです。
+    <br>
+    「どのキッチンカーが美味しかったか」「どんな体験ができたか」を投稿・閲覧することで、キッチンカーの魅力を発信します。
+    <br>
+    キッチンカーの魅力を知って、自分のあすすめ体験をシェアしてみませんか？
+    </p>
 
-  <% unless current_user %>
-    <div class="d-flex justify-content-center gap-3 mb-3">
-      <%= link_to '新規登録', new_user_registration_path, class: "btn btn-primary btn-lg" %>
-      <%= link_to 'ログイン', new_user_session_path, class: "btn btn-primary btn-lg", id: "login-button" %>
-    </div>
-  <% end %>
+    <% unless current_user %>
+      <div class="d-flex justify-content-center gap-3 mb-3">
+        <%= link_to '新規登録', new_user_registration_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to 'ログイン', new_user_session_path, class: "btn btn-primary btn-lg", id: "login-button" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div>
-  <div class="text-center my-5">
-    <h2>新着投稿</h2>
+  <div class="text-center space">
+    <h2 class="border-bottom m-5">新着投稿</h2>
   </div>
   <div class="row">
     <% @posts.each do |post| %>
@@ -39,5 +46,18 @@
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+
+<div class="card shadow p-3 bg-body-tertiary rounded mb-5 space">
+  <div class="text-center">
+    <h2 class="mt-5">自分のキッチンカーの体験をシェアしよう</h2>
+    <p>投稿には写真や訪れた日時、場所も登録できるので、実際の体験を具体的に伝えることができます。
+    <br>
+    他のユーザーのレビューを参考にして、次に行くキッチンカーを選んだり、自分だけの体験を記録することも可能です。
+    <br>
+    ぜひ、自分の体験をシェアして、キッチンカーの魅力を発信しましょう！
+    </p>
+    <%= link_to "投稿一覧へ", posts_path, class: "btn btn-primary btn-lg m-5" %>
   </div>
 </div>

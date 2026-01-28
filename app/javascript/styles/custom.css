@@ -3,10 +3,9 @@
 }
   
 .header-title {
-  color: yellow !important;
-  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  font-family: "Kaisei Decol", serif;
+  color: #ffffff !important;
   font-size: 24px;
-  font-weight: bold;
   text-decoration: none;
 }
 
@@ -52,4 +51,22 @@
 .show-map {
   height: 200px;
   width: 100%;
+}
+
+.bg-blue{
+  background-color: #e0ffff;
+}
+
+.space{
+  margin-top : 200px;
+}
+
+h1{
+  font-family: "Kaisei Decol", serif;
+  color: #0000cd;
+}
+
+h2{
+  font-family: "Kaisei Decol", serif;
+  color: #0000cd;
 }
