@@ -4,7 +4,7 @@ import "./controllers"
 import "bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./map";
-import "./styles/post.css"
+import "./styles/custom.css"
 import Raty from "./raty";
 
 window.addEventListener("turbo:load", () => {
