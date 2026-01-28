@@ -57,7 +57,7 @@
 
     <div class="mb-3">
       <%= f.label :tags, "タグ" %>
-      <%= f.text_field :tag_names, class: "form-control", value: post.tags.map(&:name).join(",") %>
+      <%= f.text_field :tag_names, placeholder: "例）クレープ, 東京, スイーツ", class: "form-control", value: post.tags.map(&:name).join(",") %>
     </div>
 
     <%= f.hidden_field :latitude, id: "post_latitude" %>
@@ -66,7 +66,9 @@
     <p>マップ</p>
     <div id='map' class="form-map"></div>
 
-    <%= f.submit nil, class: "btn btn-primary" %>
+    <div class="d-flex justify-content-end">
+      <%= f.submit nil, class: "btn btn-primary mt-5" %>
+    </div>
   <% end %>
 
   <script

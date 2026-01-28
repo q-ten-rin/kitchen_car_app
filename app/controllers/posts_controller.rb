@@ -19,6 +19,12 @@ class PostsController < ApplicationController
     tag_names = params[:post][:tag_names]
 
     if @post.save
+
+      if params[:post][:images].present?
+        images = params[:post][:images].reject(&:blank?)
+        @post.images.attach(images)
+      end
+
       if tag_names.present?
         tags = tag_names.split(",").reject(&:blank?).uniq
         create_or_update_post_tags(@post, tags)
@@ -45,6 +51,12 @@ class PostsController < ApplicationController
     tag_names = params[:post][:tag_names]
 
     if @post.update(post_params)
+
+      if params[:post][:images].present?
+        images = params[:post][:images].reject(&:blank?)
+        @post.images.attach(images) if images.any?
+      end
+
       if tag_names.present?
         tags = tag_names.split(",").reject(&:blank?).uniq
         create_or_update_post_tags(@post, tags)
@@ -64,7 +76,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :category_id, :place, :visited_at, :kitchen_car_name, :body, :star, :latitude, :longitude, images: [])
+    params.require(:post).permit(:title, :category_id, :place, :visited_at, :kitchen_car_name, :body, :star, :latitude, :longitude)
   end
 
   def create_or_update_post_tags(post, tags)
