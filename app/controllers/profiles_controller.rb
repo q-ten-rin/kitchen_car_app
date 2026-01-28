@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = User.find(params[:id])
-    @favorite_posts = @profile.favorite_posts.includes(:user)
+    @favorite_posts = @profile.favorite_posts.includes(:user).page(params[:page]).per(6)
   end
 
   def edit; end
