@@ -43,9 +43,11 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find_by!(uuid: params[:uuid])
     tag_names = params[:post][:tag_names]
+    Rails.logger.info "DEBUG: params[:post][:images] = #{params[:post][:images].inspect}"
 
     if @post.update(post_params.except(:images))
-      if params[:post][:images].present?
+      if params[:post][:images].present? && params[:post][:images].reject(&:blank?).any?
+        @post.images.purge if @post.images.attached?
         @post.images.attach(params[:post][:images])
       end
 
